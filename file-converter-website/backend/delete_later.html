@@ -1,0 +1,808 @@
+<style>
+/* =========================================
+   FILE CONVERTER WEBSITE
+   ========================================= */
+
+.fc-wrapper {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.fc-title {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.fc-title h2 {
+    font-size: 34px;
+    margin-bottom: 10px;
+    color: #111827;
+}
+
+.fc-title p {
+    color: #6b7280;
+    font-size: 16px;
+}
+
+
+/* =========================================
+   CONVERTER CARDS
+   ========================================= */
+
+.fc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.fc-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,.06);
+}
+
+.fc-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 18px;
+    border-radius: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.fc-pdf {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.fc-jpg {
+    background: #fff7ed;
+    color: #ea580c;
+}
+
+.fc-word {
+    background: #dbeafe;
+    color: #2563eb;
+}
+
+.fc-excel {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+.fc-card h3 {
+    color: #111827;
+    margin-bottom: 10px;
+}
+
+.fc-card p {
+    color: #6b7280;
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 45px;
+}
+
+.fc-button {
+    border: none;
+    background: #111827;
+    color: white;
+
+    padding: 12px 25px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    margin-top: 10px;
+}
+
+.fc-button:hover {
+    background: #374151;
+}
+
+
+/* =========================================
+   CONVERTER AREA
+   ========================================= */
+
+.fc-converter {
+    display: none;
+
+    max-width: 700px;
+
+    margin: 40px auto;
+
+    padding: 35px;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 18px;
+
+    background: white;
+
+    box-shadow: 0 8px 30px rgba(0,0,0,.08);
+
+    text-align: center;
+}
+
+.fc-converter.active {
+    display: block;
+}
+
+.fc-converter h2 {
+    margin-bottom: 10px;
+}
+
+.fc-converter-description {
+    color: #6b7280;
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   FILE INPUT
+   ========================================= */
+
+.fc-file-area {
+    border: 2px dashed #d1d5db;
+
+    border-radius: 12px;
+
+    padding: 35px 20px;
+
+    margin-bottom: 20px;
+}
+
+.fc-file-area input {
+    width: 100%;
+}
+
+
+/* =========================================
+   STATUS
+   ========================================= */
+
+.fc-status {
+    margin-top: 20px;
+
+    font-size: 14px;
+
+    color: #374151;
+}
+
+.fc-download {
+    display: none;
+
+    margin-top: 20px;
+
+    background: #16a34a;
+
+    color: white;
+
+    padding: 12px 25px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-weight: 600;
+}
+
+.fc-download.show {
+    display: inline-block;
+}
+
+.fc-back {
+    margin-bottom: 20px;
+
+    background: transparent;
+
+    border: 1px solid #d1d5db;
+
+    padding: 9px 18px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 1000px) {
+
+    .fc-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .fc-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .fc-converter {
+        padding: 25px 18px;
+    }
+
+}
+</style>
+
+
+<div class="fc-wrapper">
+
+    <div class="fc-title">
+
+        <h2>File Converter Tools</h2>
+
+        <p>
+            Convert your files quickly and easily.
+        </p>
+
+    </div>
+
+
+    <!-- =====================================
+         CONVERTER CARDS
+         ===================================== -->
+
+    <div class="fc-grid" id="fcCards">
+
+
+        <!-- PDF TO JPG -->
+
+        <div class="fc-card">
+
+            <div class="fc-icon fc-pdf">
+                PDF
+            </div>
+
+            <h3>PDF to JPG</h3>
+
+            <p>
+                Convert PDF pages into JPG images.
+            </p>
+
+            <button
+                class="fc-button"
+                onclick="openConverter(
+                    'pdf-to-jpg'
+                )">
+
+                Use Tool
+
+            </button>
+
+        </div>
+
+
+        <!-- JPG TO PDF -->
+
+        <div class="fc-card">
+
+            <div class="fc-icon fc-jpg">
+                JPG
+            </div>
+
+            <h3>JPG to PDF</h3>
+
+            <p>
+                Convert multiple images into one PDF.
+            </p>
+
+            <button
+                class="fc-button"
+                onclick="openConverter(
+                    'jpg-to-pdf'
+                )">
+
+                Use Tool
+
+            </button>
+
+        </div>
+
+
+        <!-- WORD TO PDF -->
+
+        <div class="fc-card">
+
+            <div class="fc-icon fc-word">
+                DOC
+            </div>
+
+            <h3>Word to PDF</h3>
+
+            <p>
+                Convert Word documents into PDF.
+            </p>
+
+            <button
+                class="fc-button"
+                onclick="openConverter(
+                    'word-to-pdf'
+                )">
+
+                Use Tool
+
+            </button>
+
+        </div>
+
+
+        <!-- EXCEL TO PDF -->
+
+        <div class="fc-card">
+
+            <div class="fc-icon fc-excel">
+                XLS
+            </div>
+
+            <h3>Excel to PDF</h3>
+
+            <p>
+                Convert Excel spreadsheets into PDF.
+            </p>
+
+            <button
+                class="fc-button"
+                onclick="openConverter(
+                    'excel-to-pdf'
+                )">
+
+                Use Tool
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+         CONVERTER INTERFACE
+         ===================================== -->
+
+    <div
+        class="fc-converter"
+        id="fcConverter">
+
+        <button
+            class="fc-back"
+            onclick="closeConverter()">
+
+            ← Back to Tools
+
+        </button>
+
+
+        <h2 id="fcConverterTitle">
+            Converter
+        </h2>
+
+
+        <p
+            class="fc-converter-description"
+            id="fcConverterDescription">
+
+        </p>
+
+
+        <div class="fc-file-area">
+
+            <input
+                type="file"
+                id="fcFileInput"
+            >
+
+        </div>
+
+
+        <button
+            class="fc-button"
+            id="fcConvertButton"
+            onclick="convertFile()">
+
+            Convert
+
+        </button>
+
+
+        <div
+            class="fc-status"
+            id="fcStatus">
+
+        </div>
+
+
+        <a
+            id="fcDownload"
+            class="fc-download"
+            download>
+
+            Download File
+
+        </a>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const API_URL =
+    "http://127.0.0.1:8000";
+
+
+let currentConverter = "";
+
+
+const converters = {
+
+    "pdf-to-jpg": {
+
+        title: "PDF to JPG",
+
+        description:
+            "Convert your PDF into JPG images.",
+
+        endpoint:
+            "/api/pdf/to-jpg",
+
+        accept:
+            ".pdf",
+
+        field:
+            "file"
+
+    },
+
+
+    "jpg-to-pdf": {
+
+        title: "JPG to PDF",
+
+        description:
+            "Convert multiple JPG, JPEG or PNG images into one PDF.",
+
+        endpoint:
+            "/api/image/to-pdf",
+
+        accept:
+            ".jpg,.jpeg,.png",
+
+        field:
+            "files",
+
+        multiple:
+            true
+
+    },
+
+
+    "word-to-pdf": {
+
+        title: "Word to PDF",
+
+        description:
+            "Convert your DOCX Word document into PDF.",
+
+        endpoint:
+            "/api/word/to-pdf",
+
+        accept:
+            ".docx",
+
+        field:
+            "file"
+
+    },
+
+
+    "excel-to-pdf": {
+
+        title: "Excel to PDF",
+
+        description:
+            "Convert your XLSX Excel spreadsheet into PDF.",
+
+        endpoint:
+            "/api/excel/to-pdf",
+
+        accept:
+            ".xlsx",
+
+        field:
+            "file"
+
+    }
+
+};
+
+
+/* =========================================
+   OPEN CONVERTER
+   ========================================= */
+
+function openConverter(type) {
+
+    currentConverter = type;
+
+    const converter =
+        converters[type];
+
+    document.getElementById(
+        "fcCards"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "fcConverter"
+    ).classList.add("active");
+
+
+    document.getElementById(
+        "fcConverterTitle"
+    ).textContent =
+        converter.title;
+
+
+    document.getElementById(
+        "fcConverterDescription"
+    ).textContent =
+        converter.description;
+
+
+    const input =
+        document.getElementById(
+            "fcFileInput"
+        );
+
+
+    input.value = "";
+
+    input.accept =
+        converter.accept;
+
+    input.multiple =
+        converter.multiple || false;
+
+
+    document.getElementById(
+        "fcStatus"
+    ).textContent = "";
+
+
+    document.getElementById(
+        "fcDownload"
+    ).classList.remove("show");
+
+}
+
+
+/* =========================================
+   CLOSE CONVERTER
+   ========================================= */
+
+function closeConverter() {
+
+    document.getElementById(
+        "fcCards"
+    ).style.display = "grid";
+
+
+    document.getElementById(
+        "fcConverter"
+    ).classList.remove("active");
+
+}
+
+
+/* =========================================
+   CONVERT FILE
+   ========================================= */
+
+async function convertFile() {
+
+    const converter =
+        converters[currentConverter];
+
+
+    const input =
+        document.getElementById(
+            "fcFileInput"
+        );
+
+
+    const status =
+        document.getElementById(
+            "fcStatus"
+        );
+
+
+    const download =
+        document.getElementById(
+            "fcDownload"
+        );
+
+
+    if (!input.files.length) {
+
+        status.textContent =
+            "Please select a file first.";
+
+        return;
+
+    }
+
+
+    status.textContent =
+        "Uploading and converting...";
+
+
+    download.classList.remove(
+        "show"
+    );
+
+
+    const formData =
+        new FormData();
+
+
+    if (converter.multiple) {
+
+        for (
+            let i = 0;
+            i < input.files.length;
+            i++
+        ) {
+
+            formData.append(
+                converter.field,
+                input.files[i]
+            );
+
+        }
+
+    } else {
+
+        formData.append(
+            converter.field,
+            input.files[0]
+        );
+
+    }
+
+
+    try {
+
+        const response =
+            await fetch(
+                API_URL +
+                converter.endpoint,
+                {
+
+                    method: "POST",
+
+                    body: formData
+
+                }
+            );
+
+
+        if (!response.ok) {
+
+            let message =
+                "Conversion failed.";
+
+            try {
+
+                const error =
+                    await response.json();
+
+                if (error.detail) {
+                    message =
+                        error.detail;
+                }
+
+            } catch (e) {}
+
+            throw new Error(
+                message
+            );
+
+        }
+
+
+        const blob =
+            await response.blob();
+
+
+        const url =
+            window.URL.createObjectURL(
+                blob
+            );
+
+
+        download.href =
+            url;
+
+
+        download.download =
+            getDownloadName(
+                currentConverter
+            );
+
+
+        download.classList.add(
+            "show"
+        );
+
+
+        status.textContent =
+            "Conversion completed successfully!";
+
+
+    } catch (error) {
+
+        console.error(error);
+
+
+        status.textContent =
+            "Error: " +
+            error.message;
+
+    }
+
+}
+
+
+/* =========================================
+   DOWNLOAD FILE NAME
+   ========================================= */
+
+function getDownloadName(type) {
+
+    if (
+        type === "jpg-to-pdf" ||
+        type === "word-to-pdf" ||
+        type === "excel-to-pdf"
+    ) {
+
+        return "converted.pdf";
+
+    }
+
+
+    if (
+        type === "pdf-to-jpg"
+    ) {
+
+        return "converted.jpg";
+
+    }
+
+
+    return "converted-file";
+
+}
+
+</script>
